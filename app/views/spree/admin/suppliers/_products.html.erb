@@ -1,0 +1,30 @@
+<% if collection.any? %>
+
+<%= hidden_field_tag "supplier[product_ids][]", nil %>
+  <table class="index" id="listing_products">
+    <thead>
+      <tr data-hook="admin_products_index_headers">
+        <th>Assigned</th>
+        <th>SKU</th>
+        <th>Product Image</th>
+        <th>Product Link</th>
+        <th>Price</th>
+        <th data-hook="admin_products_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% collection.each do |product| %>
+            <td class="align-center"><%= check_box_tag "supplier[product_ids][]", product.id, @supplier.product_ids.include?(product.id), id: dom_id(product) %></td>
+            <td class="align-center"><%= product.sku rescue '' %></td>
+            <td class="align-center"><%= mini_image(product) %></td>
+            <td><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
+            <td class="align-center"><%= product.display_price.to_html rescue '' %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= Spree.t(:no_results) %>
+  </div>
+<% end %>

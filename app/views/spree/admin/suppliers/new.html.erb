@@ -1,0 +1,13 @@
+<% content_for :page_title do %>
+<h1 class="page-title ">  New Supplier</h1>
+<%end%>
+
+
+<%= form_for @supplier, :url => spree.admin_suppliers_path, :html => {:method => 'post', :multipart => true } do |f| %>
+<%= render :partial => "form", :locals => { :f => f } %>
+
+<p class="form-buttons">
+<%= submit_tag "Create Supplier", :icon => 'icon-plus' %>
+or <%= link_to "cancel", spree.admin_suppliers_path %>
+</p>
+<% end %>

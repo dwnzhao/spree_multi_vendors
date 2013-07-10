@@ -1,0 +1,36 @@
+<% content_for :page_title do %>
+<h1 class="page-title "> Suppliers </h1>
+
+<% content_for :page_actions do%>
+<%= button_link_to "New Supplier", spree.new_admin_supplier_path, :icon => 'icon-plus' %>
+<%end%>
+
+<%end%>
+
+
+
+<table class="index" width="545">
+	<thead>
+		<tr>
+			<th><%= "supplier_name"%></th>
+			<th>Email</th>
+			<th>Products</th>
+			<th class='actions'>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @suppliers.each do |supplier| %>
+		<tr class="<%= cycle('even', 'odd') %>">
+			<td><%= link_to supplier.name, spree.edit_admin_supplier_path(supplier) %></td>
+			<td><%= link_to supplier.email, spree.edit_admin_supplier_path(supplier) %></td>
+			<td><%= supplier.products.collect(&:name).join("<br>").html_safe%></td>
+			<td class='actions'>				
+				<%= link_to "", spree.edit_admin_supplier_path(supplier), :class => 'edit icon_link with-tip icon-edit no-text'%>
+				&nbsp;
+				<%= link_to "", spree.admin_supplier_path(supplier), :class => 'edit icon_link with-tip icon-trash no-text', :method => 'delete'%>
+			</td>
+		</tr><% end %>
+	</tbody>
+</table>
+
+

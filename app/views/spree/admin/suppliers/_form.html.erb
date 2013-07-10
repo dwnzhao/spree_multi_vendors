@@ -1,0 +1,23 @@
+<h3>Information</h3>
+<table class="admin-report">
+	<tr>
+    <td valign="top">Company Name:</td>
+    <td><%= f.text_field :name, autofocus: true, required: true %></td>
+  </tr>
+  <tr>
+    <td valign="top">Phone:</td>
+    <td><%= f.text_field :phone, type: "tel", required: true%></td>
+  </tr>
+  <tr>
+    <td valign="top">Fax:</td>
+    <td><%= f.text_field :fax, type: "tel", required: true %></td>
+  </tr>
+  <tr>
+    <td valign="top">Email:</td>
+    <td><%= f.text_field :email, type: "email", required: true %></td>
+  </tr>
+  <tr>
+    <td valign="top">Website:</td>
+    <td><%= f.text_field :website%></td>
+  </tr>
+</table>
